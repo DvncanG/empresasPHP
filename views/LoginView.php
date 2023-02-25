@@ -1,7 +1,9 @@
 <?php
 
-function printLogin($user = "", $pass = "", $saveLogin = false, $loginError = false) {
-    echo '<div class="row col-5 border border-3 rounded position-absolute top-50 start-50 translate-middle p-5 login">
+class LoginView {
+
+    function printLogin($user = "", $pass = "", $saveLogin = false, $loginError = false) {
+        echo '<div class="row col-5 border border-3 rounded position-absolute top-50 start-50 translate-middle p-5 login">
             <h1 class=" row fs-3 mb-5 justify-content-center login__header">Pizzeria - Ribera del Tajo</h1>
             <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -27,17 +29,17 @@ function printLogin($user = "", $pass = "", $saveLogin = false, $loginError = fa
                                    placeholder="Password" name="passLogin" value="' . $pass . '">
                             <label for="floatingPassword" class="ps-4"> <i class="bi bi-key-fill"></i> Contraseña</label>
                         </div>';
-    if (isset($loginError) && $loginError) {//Credenciales incorrectas
-        echo '<div class="row p-2">
+        if (isset($loginError) && $loginError) {//Credenciales incorrectas
+            echo '<div class="row p-2">
                                                                 <p class="text-danger m-0"> * Usuario y/o contraseña incorrecta</p>
                                                               </div>';
-    }
-    echo '<div class="mb-3 form-check py-2 mt-1 color-white">
+        }
+        echo '<div class="mb-3 form-check py-2 mt-1 color-white">
                                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="saveLogin" ';
-    if ($saveLogin) {
-        echo "checked";
-    }
-    echo ' value="1">
+        if ($saveLogin) {
+            echo "checked";
+        }
+        echo ' value="1">
                             <label class="form-check-label text-light" for="exampleCheck1">Recuérdame</label>
                         </div>
                         <div class="row">
@@ -102,5 +104,13 @@ function printLogin($user = "", $pass = "", $saveLogin = false, $loginError = fa
                 </div>
             </div>
         </div>';
+    }
+
+    function showLogin($user = "", $pass = "", $saveLogin = false, $loginError = false) {//Por defecto no muestro nada en los inputs
+       $this->printLogin($user, $pass, $saveLogin, $loginError);
+    }
+
+    function loadAction($controller, $action) {
+        $controller->$action();
+    }
 }
-    

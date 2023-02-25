@@ -21,7 +21,7 @@ class LoginModel {
     public function getAll() {
         $query = $this->db->query('SELECT * FROM usuario');
         //Cierro la BD
-        unset($his->db);
+        unset($this->db);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -34,7 +34,7 @@ class LoginModel {
     public function getUserLogin($user, $pass) {
         $query = $this->db->query('SELECT * FROM usuario WHERE nombre = :user AND contraseña = :pass', [':user' => $user, ':pass' => $pass]);
         //Cierro la BD
-        unset($his->db);
+        unset($this->db);
         return $query->fetch(PDO::FETCH_ASSOC);
     }
     

@@ -65,5 +65,5 @@ class LoginController {
     public function logOut() {
         $this->model->logOut();
     }
-
+    
 }
