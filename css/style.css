@@ -1,0 +1,28 @@
+.body{
+    background-color: grey
+}
+.flex {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ml {
+    margin-left: 25px;
+}
+
+.txt_point {
+    list-style: none;
+}
+
+.negr {
+    font-weight: bold;
+}
+
+.mt {
+    margin-top: 200px;
+}
+
+.img_td{
+    width: 50px;
+}
+

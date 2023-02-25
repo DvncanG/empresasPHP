@@ -34,17 +34,20 @@ class LoginController {
      * processUserLogin() --> Función que controla el procesamiento de los datos introducidos por el usuario en el login
      */
     public function processUserLogin() {
-    
+
         //Obtengo las credenciales introducidas por el usuario
         $user = filtrarInput("userLogin", "POST");
-        $pass = hash('sha256',filtrarInput("passLogin", "POST"));
+        $pass = filtrarInput("passLogin", "POST");
         try {//Si la DB está disponible
         } catch (Exception $ex) {//Si la DB no está disponible
             $this->view->showLogin($loginSaved[0], $loginSaved[1], true, $loginError);
         }
         //Compruebo las credenciales y redirijo al usuario dependiendo de si son correctas o no
         $userLogin = $this->model->getUserLogin($user, $pass);
+
         if ($userLogin) {//Si las credenciales son correctas
+            var_dump($userLogin);
+            die("matrix");
             //Compruebo si el usuario desea guardar la contraseña
             if (filtrarInput("saveLogin", "POST")) {//Si quiere guardar sus credenciales las almaceno en cookies
                 $this->model->saveLogin($user, $pass);
@@ -65,5 +68,5 @@ class LoginController {
     public function logOut() {
         $this->model->logOut();
     }
-    
+
 }

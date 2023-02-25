@@ -19,7 +19,7 @@ class LoginModel {
      * @return --> devuelve un array multidimensional con todos los registros de ejecutar la consulta $query
      */
     public function getAll() {
-        $query = $this->db->query('SELECT * FROM usuario');
+        $query = $this->db->query('SELECT * FROM usuarios');
         //Cierro la BD
         unset($this->db);
         return $query->fetchAll(PDO::FETCH_ASSOC);
@@ -32,7 +32,7 @@ class LoginModel {
      * @return type --> devuelve el array asociativo/objeto del usuario correspondiente a $user y $pass
      */
     public function getUserLogin($user, $pass) {
-        $query = $this->db->query('SELECT * FROM usuario WHERE nombre = :user AND contraseña = :pass', [':user' => $user, ':pass' => $pass]);
+        $query = $this->db->query('SELECT * FROM usuarios WHERE Nombre = :user AND Clave = :pass', [':user' => $user, ':pass' => $pass]);
         //Cierro la BD
         unset($this->db);
         return $query->fetch(PDO::FETCH_ASSOC);

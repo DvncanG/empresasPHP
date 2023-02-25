@@ -9,6 +9,23 @@ function filtrarInput($input, $metodo) {
     return $variableFiltrada;
 }
 
+function filtrarArrayInput($arrayInputName, $clavesAComprobar, &$errorInputVacio) {
+    $arrayInputs = isset(filter_input_array(INPUT_POST)[$arrayInputName]) ? filter_input_array(INPUT_POST)[$arrayInputName] : null;
+    if (isset($arrayInputs)) {//Si el array existe
+        //Filtro con htmlspecialchars todos los campos del array
+        foreach ($arrayInputs as &$value) {
+            $value = htmlspecialchars($value);
+        }
+        //Compruebo si los campos necesarios existen y si están vacios
+        foreach ($clavesAComprobar as $inputs) {
+            if (!isset($arrayInputs[$inputs]) || (isset($arrayInputs[$inputs]) && trim($arrayInputs[$inputs]) == "")) {//Si no existe o si existe y está vacio
+                $errorInputVacio = true; //Cambio el valor del error a true
+            }
+        }
+    }
+    return $arrayInputs;
+}
+
 function loadController($controllerName) {
     $controller = $controllerName . 'Controller';
     if (class_exists($controller)) {
