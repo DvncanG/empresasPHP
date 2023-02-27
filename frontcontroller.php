@@ -11,9 +11,8 @@ if (isset($_SESSION["token"]) && isset($_SESSION["user"])) {
     if (isset($_GET["controller"]) && $_GET["controller"] == "Admin") {
         define("DEFAULT_ACTION", "listUsuarios");
     } else {
-        //define("DEFAULT_ACTION", "listApp");
-        //define("DEFAULT_CONTROLLER", "App");
-        die("usuario correctamente logueado");
+        define("DEFAULT_ACTION", "listApp");
+        define("DEFAULT_CONTROLLER", "App");
     }
 } else {
     define("DEFAULT_ACTION", "showLogin");

@@ -46,8 +46,6 @@ class LoginController {
         $userLogin = $this->model->getUserLogin($user, $pass);
 
         if ($userLogin) {//Si las credenciales son correctas
-            var_dump($userLogin);
-            die("matrix");
             //Compruebo si el usuario desea guardar la contraseña
             if (filtrarInput("saveLogin", "POST")) {//Si quiere guardar sus credenciales las almaceno en cookies
                 $this->model->saveLogin($user, $pass);
