@@ -1,6 +1,10 @@
 <?php
 
+session_start();
 include './models/LoginModel.php';
+include './controllers/AppController.php';
+include './models/AppModel.php';
+include './views/AppView.php';
 include './controllers/LoginController.php';
 include './controllers/AdminController.php';
 include './controllers/UserController.php';

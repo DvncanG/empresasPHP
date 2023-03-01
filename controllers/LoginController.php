@@ -34,7 +34,6 @@ class LoginController {
      * processUserLogin() --> Función que controla el procesamiento de los datos introducidos por el usuario en el login
      */
     public function processUserLogin() {
-
         //Obtengo las credenciales introducidas por el usuario
         $user = filtrarInput("userLogin", "POST");
         $pass = filtrarInput("passLogin", "POST");

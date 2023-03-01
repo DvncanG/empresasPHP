@@ -4,7 +4,8 @@ class AppController {
 
     public function listApp() {
         
-        return "matrix";
+        echo "matrix2";
+        //Entramos aquí
         
     }
 }
