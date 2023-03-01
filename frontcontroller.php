@@ -1,15 +1,25 @@
 <?php
 
 session_start();
-include './models/LoginModel.php';
-include './controllers/AppController.php';
+
+//APP
 include './models/AppModel.php';
 include './views/AppView.php';
+include './controllers/AppController.php';
+
+//LOGIN
+include './models/LoginModel.php';
 include './controllers/LoginController.php';
+include './views/LoginView.php';
+
+//ADMIN
 include './controllers/AdminController.php';
+include './views/AdminView.php';
+
+//USER
 include './controllers/UserController.php';
 include './funcions/FrontFunctions.php';
-include './views/LoginView.php';
+
 
 if (isset($_SESSION["token"]) && isset($_SESSION["user"])) {
     if (isset($_GET["controller"]) && $_GET["controller"] == "Admin") {
