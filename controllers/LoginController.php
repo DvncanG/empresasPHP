@@ -52,7 +52,11 @@ class LoginController {
                 $this->model->removeUserSaved();
             }
             //Guardo la sesión:
-            $this->model->addSessionData($user, $userLogin["id"], $userLogin["role"]);
+            $this->model->addSessionData($user, $userLogin["id"], $userLogin["Rol"]);
+            if($userLogin["Rol"]==1){
+                header("Location: index.php?controller=Admin&action=listUsuarios");
+                die();
+            }
             header("Location: index.php"); //Redirijo directamente al index, ya que al haber iniciado sesión automáticamente mostrará la acción por defecto de iniciar sesión
         } else {//Si las credenciales no son correctas
             header("Location: index.php?loginError=1");
