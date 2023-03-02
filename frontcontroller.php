@@ -1,7 +1,15 @@
 <?php
 
 session_start();
+//PHPMAILER
+// if ($_GET["emailSent"]!=1) {
+//     include './controllers/PhpMailer.php';
+// }
 
+//DEPARTAMENTO
+
+include './models/DepartamentoModel.php';
+include './controllers/DepartamentoController.php';
 //APP
 include './models/AppModel.php';
 include './views/AppView.php';
@@ -39,7 +47,7 @@ if (isset($_SESSION["token"]) && isset($_SESSION["user"])) {
 if (isset($_GET["controller"])) {
     $controller = loadController($_GET["controller"]);
     executeAction($controller);
-} else {//En caso contrario ejecuto el controlador y la acción por defecto
+} else { //En caso contrario ejecuto el controlador y la acción por defecto
     $controller = loadController(DEFAULT_CONTROLLER);
     executeAction($controller);
 }
